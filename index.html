@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNOWDLOP 1st Arena Live "first drop" 特設サイト</title>
+    <style>
+        /* 基本設定 */
+        :root {
+            --bg-color: #000814; /* 藍色ベースの暗い背景 */
+            --keiichi-color: #FFB74D; /* 氷晶：オレンジ寄りの黄色 */
+            --asana-color: #6551A1;   /* 東雲：指定カラー */
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; transition: 0.3s; }
+        a:hover { opacity: 0.7; }
+
+        /* レイアウト */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+        }
+
+        /* 1. ヒーローセクション */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000814 0%, #051937 100%);
+            text-align: center;
+        }
+
+        .logo-placeholder {
+            width: 250px;
+            height: 250px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(255,255,255,0.3);
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 10px 0;
+            background: linear-gradient(to right, var(--keiichi-color), var(--asana-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* 2. ライブ情報 */
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .sold-out {
+            display: inline-block;
+            color: #ff5252;
+            border: 2px solid #ff5252;
+            padding: 10px 30px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            transform: rotate(-3deg);
+        }
+
+        /* 3. プロフィール */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .profile-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid #fff;
+        }
+
+        .p-keiichi { border-color: var(--keiichi-color); }
+        .p-asana { border-color: var(--asana-color); }
+
+        .profile-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #111;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        /* 4. 動画アーカイブ（4本並び） */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 5. フッター / SNS */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .creator-sns {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .creator-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .sns-link-item {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: #aaa;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid, .archive-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="logo-placeholder">
+            <span>LIVE LOGO AREA</span>
+        </div>
+        <p style="letter-spacing: 0.3rem; margin-bottom: 0;">SNOWDLOP 1st Arena Live</p>
+        <h1>"first drop"</h1>
+    </header>
+
+    <div class="container">
+        
+        <section id="info">
+            <h2>TICKET & INFO</h2>
+            <div class="info-card">
+                <h3 style="font-size: 1.5rem; color: var(--keiichi-color);">SNOWDLOP 1st Arena Live "first drop"</h3>
+                <p><strong>DATE:</strong> 2226年12月24日（木）</p>
+                <p><strong>TIME:</strong> 開場 17:00 / 開演 18:30</p>
+                <p><strong>PLACE:</strong> ブルーバードアリーナ</p>
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+                <p>プレミアムS席（特典付）：12,000円</p>
+                <p>一般指定席：7,500 unit</p>
+                <div class="sold-out">SOLD OUT</div>
+                <p style="margin-top:15px; font-size: 0.8rem; opacity: 0.7;">※当日券の販売予定はございません。</p>
+            </div>
+        </section>
+
+        <section id="artist">
+            <h2>ARTIST</h2>
+            <div class="profile-grid">
+                <div class="profile-item p-keiichi">
+                    <div class="profile-img">
+                        <span>IMAGE: 氷晶 珪壱</span>
+                    </div>
+                    <h3 style="color: var(--keiichi-color);">氷晶 珪壱 <small style="color: #fff; opacity: 0.6;">(Vocal)</small></h3>
+                    <p>SNOWDLOPのボーカル。歌唱力はもちろんのこと、圧倒的なビジュアルから特に女性人気が高い。普段はクールな立ち回りだが、マイクを握れば熱く歌い上げる。</p>
+                </div>
+
+                <div class="profile-item p-asana">
+                    <div class="profile-img">
+                        <span>IMAGE: 東雲 あさな</span>
+                    </div>
+                    <h3 style="color: var(--asana-color);">東雲 あさな <small style="color: #fff; opacity: 0.6;">(Composer)</small></h3>
+                    <p>SNOWDLOPの作詞作曲担当。音楽の才能に満ち溢れており、SNOWDLOPの楽曲はすべて彼が制作している。気さくな性格で相手を楽しませることが好き。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="archive">
+    <div class="container">
+        <h2>LIVE ARCHIVE</h2>
+        
+        <div class="main-video-view">
+            <a id="main-link" href="https://www.youtube.com/watch?v=1zJtDXheaH4" target="_blank">
+                <div class="play-overlay">▶ PLAY</div>
+                <img id="main-img" src="https://img.youtube.com/vi/1zJtDXheaH4/maxresdefault.jpg" alt="Main Preview">
+            </a>
+            <p id="video-title">【CoC】「すみません、よくわかりません。」</p>
+        </div>
+
+        <div class="thumb-list">
+            <div class="thumb-item active" onclick="switchMain('1zJtDXheaH4', '【CoC】「すみません、よくわかりません。」', this)">
+                <img src="https://img.youtube.com/vi/1zJtDXheaH4/mqdefault.jpg" alt="Video 1">
+            </div>
+            <div class="thumb-item" onclick="switchMain('nfzE6kQaowI', '【クトゥルフ神話TRPG】終夜', this)">
+                <img src="https://img.youtube.com/vi/nfzE6kQaowI/mqdefault.jpg" alt="Video 2">
+            </div>
+            <div class="thumb-item" onclick="switchMain('ydw9th5lAlI', '【高生卓】NOISY NOTE', this)">
+                <img src="https://img.youtube.com/vi/ydw9th5lAlI/mqdefault.jpg" alt="Video 3">
+            </div>
+            <div class="thumb-item" onclick="switchMain('VfnHVV4nwUM', '【クトゥルフ神話TRPG】メイフラワーの咲く森で', this)">
+                <img src="https://img.youtube.com/vi/VfnHVV4nwUM/mqdefault.jpg" alt="Video 4">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* MOVIEセクションの専用スタイル */
+.main-video-view {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+}
+
+.main-video-view img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.main-video-view:hover img {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
+/* 再生アイコンのオーバーレイ */
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background: rgba(255, 183, 77, 0.9); /* 氷晶カラー */
+    color: #000;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.main-video-view:hover .play-overlay {
+    opacity: 1;
+}
+
+#video-title {
+    background: rgba(0,0,0,0.8);
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    color: var(--keiichi-color);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* サムネイルリスト */
+.thumb-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.thumb-item {
+    flex: 0 0 160px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    opacity: 0.5;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.thumb-item img {
+    width: 100%;
+    display: block;
+}
+
+.thumb-item:hover, .thumb-item.active {
+    opacity: 1;
+    border-color: var(--asana-color);
+    box-shadow: 0 0 15px var(--asana-color);
+}
+
+@media (max-width: 600px) {
+    .thumb-item { flex: 0 0 120px; }
+}
+</style>
+
+<script>
+// メインの画像とリンク先を切り替えるスクリプト
+function switchMain(videoId, title, element) {
+    const mainImg = document.getElementById('main-img');
+    const mainLink = document.getElementById('main-link');
+    const titleText = document.getElementById('video-title');
+    
+    // 画像URLとYouTubeリンクの更新
+    mainImg.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    mainLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+    titleText.innerText = title;
+    
+    // アクティブ表示の切り替え
+    const thumbs = document.querySelectorAll('.thumb-item');
+    thumbs.forEach(t => t.classList.remove('active'));
+    element.classList.add('active');
+}
+</script>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="creator-sns">
+                <div class="creator-box">
+                    <p><strong>Aotsuki Slip</strong></p>
+                    <a href="https://twitter.com/Slipchang" class="sns-link-item" target="_blank">Twitter: @Slipchang</a>
+                    <a href="https://youtube.com/@AotsukiSlip" class="sns-link-item" target="_blank">YouTube Channel</a>
+                </div>
+                <div class="creator-box">
+                    <p><strong>Takao Shinji</strong></p>
+                    <a href="https://twitter.com/takao_shinji" class="sns-link-item" target="_blank">Twitter: @takao_shinji</a>
+                    <a href="https://youtube.com/@takao_shinji" class="sns-link-item" target="_blank">YouTube Channel</a>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Snowdrop Project4‐1.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
